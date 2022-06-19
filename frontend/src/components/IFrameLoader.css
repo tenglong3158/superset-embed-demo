@@ -3,6 +3,11 @@
     min-width: 80%;
 }
 
+.IFrameLoader > iframe{
+    width: 100%;
+    height:1000px;
+}
+
 #my-test-frame {
     width: 100%;
     height: 100%;

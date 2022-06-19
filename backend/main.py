@@ -2,20 +2,23 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import requests, time, asyncio
 
+BASE_URL = 'http://127.0.0.1:5000/'
+# BASE_URL = "http://testdap.juneyaoair.com:5000/"
+
 def get_access_token():
-    url = 'https://analytics.test.data.avedian.info/api/v1/security/login'
+    url = f'{BASE_URL}api/v1/security/login'
     body = {
-        "password": "xxx",
-        "provider": "ldap",
+        "password": "admin",
+        "provider": "db",
         "refresh": True,
-        "username": "gmartinez"
+        "username": "admin"
     }
     response = requests.post(url=url, json=body)
     tokens = response.json()
     return tokens["access_token"], tokens["refresh_token"]
 
 def refresh_access_token():
-    url = 'https://analytics.test.data.avedian.info/api/v1/security/refresh'
+    url = f'{BASE_URL}api/v1/security/refresh'
     headers = {"Authorization": f'Bearer {refresh_token}'}
     response = requests.post(url=url, headers=headers)
     token = response.json()
@@ -41,12 +44,12 @@ def test():
 
 @app.post("/fetchGuestToken")
 def fetch_token():
-    url = 'https://analytics.test.data.avedian.info/api/v1/security/guest_token'
+    url = f'{BASE_URL}api/v1/security/guest_token/'
     headers = {"Authorization": f'Bearer {access_token}'}
     body = {
         "resources": [
             {
-                "id": "xxx",
+                "id": "f26a4ce2-710b-4f6b-8fa3-3f6653060b71",
                 "type": "dashboard"
             }
         ],
