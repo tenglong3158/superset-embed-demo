@@ -3,15 +3,14 @@ from fastapi.middleware.cors import CORSMiddleware
 import requests, time, asyncio
 
 BASE_URL = 'http://127.0.0.1:5000/'
-# BASE_URL = "http://testdap.juneyaoair.com:5000/"
 
 def get_access_token():
     url = f'{BASE_URL}api/v1/security/login'
     body = {
-        "password": "admin",
+        "password": "embed",
         "provider": "db",
         "refresh": True,
-        "username": "admin"
+        "username": "embed"
     }
     response = requests.post(url=url, json=body)
     tokens = response.json()

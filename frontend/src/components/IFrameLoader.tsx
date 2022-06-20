@@ -24,7 +24,6 @@ export class IFrameLoader extends Component {
         const myDashboard = await embedDashboard({
             id: "f26a4ce2-710b-4f6b-8fa3-3f6653060b71", // given by the Superset embedding UI
             supersetDomain: "http://127.0.0.1:5000",
-            // supersetDomain: "http://testdap.juneyaoair.com:5000/",
             mountPoint: document.getElementById("superset-container")!, // any html element that can contain an iframe
             fetchGuestToken: () => fetchGuestTokenFromBackend(),
             debug: true
